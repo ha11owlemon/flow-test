@@ -37,9 +37,19 @@ npm run serve
 
 静态产物输出到 `build/`。`node_modules/`、`build/` 和 `.docusaurus/` 已被 `.gitignore` 排除；后续上传源代码时应保留 `package-lock.json`。
 
+## GitHub Actions 构建
+
+工作流文件：`.github/workflows/build.yml`，在推送到 `main`、向 `main` 提交或更新 Pull Request，以及手动运行时触发。
+
+工作流使用 Node.js 24，通过 `npm ci` 安装锁定的依赖，再执行 `npm run build`。成功后将 `build/` 上传为 `docusaurus-static-site` 构建产物，保留 7 天，可在 GitHub Actions 对应运行页面的 Artifacts 区域下载。
+
+提交并推送工作流后，可在仓库的 Actions 页面选择 `Build Docusaurus` 查看结果，或使用 `Run workflow` 手动触发。本工作流负责生成和保存静态页面，站点部署需另行配置。
+
+使用的官方 Actions：[checkout](https://github.com/actions/checkout)、[setup-node](https://github.com/actions/setup-node)、[upload-artifact](https://github.com/actions/upload-artifact)。
+
 ## 后续链路接入
 
-当前已准备本地站点和两篇测试文档。Sveltia CMS、GitHub 仓库连接及 GitHub Actions 工作流尚待配置。
+当前已准备本地站点、两篇测试文档和 GitHub Actions 构建工作流。Sveltia CMS 和站点部署尚待配置。
 
 接入 CMS 时，文档集合目录使用 `docs`，文件扩展名使用 `md`，正文对应 `body` 字段。部署时需将 `docusaurus.config.js` 中的 `url` 和 `baseUrl` 调整为实际站点地址和路径。
 
