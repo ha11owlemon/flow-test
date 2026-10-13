@@ -1,5 +1,6 @@
 ---
 id: edit-content-test
+slug: /edit-content-test
 title: 内容编辑测试
 sidebar_position: 1
 description: 用于测试文档标题、正文和不同 Markdown 元素的编辑与保存。

@@ -1,0 +1,17 @@
+{
+  "name": "flow-test-remote-cms",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "prestart": "npm run build",
+    "start": "node scripts/serve.mjs"
+  },
+  "dependencies": {
+    "@sveltia/cms": "0.235.1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "label": "扩展模块",
+  "position": 6,
+  "link": {
+    "type": "generated-index",
+    "slug": "/category/modules",
+    "description": "扩展模块的硬件、固件和接口说明。"
+  }
+}

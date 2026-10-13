@@ -1,5 +1,6 @@
 ---
 id: publish-verification-test
+slug: /publish-verification-test
 title: 发布验证测试
 sidebar_position: 2
 description: 用于记录文档保存、GitHub 提交和 GitHub Actions 执行的验证结果。

@@ -1,0 +1,9 @@
+{
+  "label": "控制板",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "slug": "/category/controllers",
+    "description": "FYSETC 控制板的功能、接线和固件配置说明。"
+  }
+}

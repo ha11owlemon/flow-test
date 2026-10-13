@@ -1,0 +1,9 @@
+{
+  "label": "步进电机驱动",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "slug": "/category/drivers",
+    "description": "步进驱动的规格、引脚和工作模式说明。"
+  }
+}

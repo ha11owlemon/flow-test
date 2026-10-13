@@ -1,0 +1,9 @@
+{
+  "label": "显示面板",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "slug": "/category/displays",
+    "description": "显示面板的接线、固件配置和安装参考。"
+  }
+}

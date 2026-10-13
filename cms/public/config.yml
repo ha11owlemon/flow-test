@@ -1,0 +1,78 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms@0.235.1/schema/sveltia-cms.json
+# 独立管理端，通过 GitHub API 管理远程仓库；不需要文档仓库的本地 checkout。
+backend:
+  name: github
+  repo: ha11owlemon/flow-test
+  branch: main
+  # 本机 OAuth 客户端；公司部署时由 CMS_AUTH_URL 替换为 HTTPS 地址。
+  base_url: http://127.0.0.1:8787
+
+app_title: GitHub 文档管理
+site_url: https://ha11owlemon.github.io/flow-test/
+display_url: https://ha11owlemon.github.io/flow-test/
+# 这里是 GitHub 文档仓库中的目录，不是 CMS 服务的本地上传目录。
+media_folder: /static/images
+public_folder: /images
+slug:
+  lowercase: false
+output:
+  omit_empty_optional_fields: true
+
+collections:
+  - name: documentation
+    label: 文档
+    label_singular: 文档
+    description: 管理远程 main 分支；保存后提交 GitHub 并触发文档构建。
+    folder: docs
+    extension: md
+    format: frontmatter
+    create: true
+    delete: false
+    duplicate: false
+    identifier_field: id
+    slug: {template: '{{id}}', editable: false}
+    summary: '{{title}} · {{id}}'
+    preview_path: 'docs{{fields.slug}}/'
+    nested:
+      subfolders: false
+    meta:
+      path: {}
+    # 显式绝对路径，防止子目录文档把图片传到 docs/.../static/images。
+    media_folder: /static/images
+    public_folder: /images
+    sortable_fields: [title, sidebar_position]
+    fields:
+      - name: id
+        label: 文档 ID
+        widget: string
+        pattern: ['^[A-Za-z0-9][A-Za-z0-9._-]*$', '请使用英文字母、数字、点、横线和下划线']
+        hint: 已有文档保持 ID 不变；新建时使用唯一 ID。
+      - name: title
+        label: 标题
+        widget: string
+      - name: slug
+        label: 页面地址
+        widget: string
+        pattern: ['^/[A-Za-z0-9][A-Za-z0-9._/-]*$', '地址须以 / 开头，后面使用英文字母、数字、横线、下划线或子目录']
+        hint: 新建时填写 /文档ID；已有地址保持不变，避免链接失效。
+      - name: sidebar_position
+        label: 目录顺序
+        widget: number
+        value_type: int
+        min: 1
+        required: false
+      - name: description
+        label: 摘要
+        widget: text
+        required: false
+      - name: body
+        label: 正文（Markdown）
+        widget: markdown
+        modes: [raw]
+        hint: 保留原文的 HTML 表格；右侧预览与文档站的显示可能不同。
+
+asset_collections:
+  - name: document_images
+    label: 文档图片
+    media_folder: /static/images
+    public_folder: /images

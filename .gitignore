@@ -1,6 +1,15 @@
 # Dependencies
 /node_modules
 
+# Local-only services and their OAuth credentials
+/.local-services/
+/.pnpm-store/
+
+# Standalone CMS dependencies and deployment output
+/cms/node_modules/
+/cms/dist/
+/cms/.env.local
+
 # Production
 /build
 
