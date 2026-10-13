@@ -1,25 +1,25 @@
 ---
 id: Silent2209
 title: Silent2209
-description: Silent2209 的步进电机驱动文档，便于查阅相关原始说明。
 slug: /Silent2209
+description: Silent2209 的步进电机驱动文档，便于查阅相关原始说明。
 source_file: Silent2209.md
 source_language: en
 ---
 
 ## Product Introduction
----
+
+***
 
 ![Silent2209](/images/2209v3.0.png)
 
 <img src="/images/image-20230508155154792.png" alt="image-20230508155154792" style="zoom:50%;" />
 
-
-
 The TMC2209 is an ultra-silent motor driver IC for two phase stepper motors. TMC2209 pinning is compatible to a number of legacy drivers as well as to the TMC2208. TRINAMICs sophisticated StealthChop2 chopper ensures noiseless operation,maximum efficiency and best motor torque. Its fast current regulation and optional combination with SpreadCycle allow highly dynamic motion while adding. StallGuard for sensorless homing. The integrated power MOSFETs handle motor currents up to 2A RMS with protection and diagnostic features for robust and reliable operation. A simple to use UART interface opens up tuning and control options. Store application tuning to OTP memory.Industries’ most advanced STEP/DIR stepper motor driver family upgrades designs to noiseless and most precise operation for cost-effective and highly competitive solutions.Step/Dir Drivers for Two-Phase Bipolar Stepper Motors up to 2.8A peak –StealthChop™ for Quiet Movement – UART Interface Option –Sensorless Stall Detection StallGuard4. 
 
 ## Features
----
+
+***
 
 - 2-phase stepper motors up to 2.8A coil current (peak), 2A RMS 
 - STEP/DIR Interface with 8, 16, 32 or 64 microstep pin setting
@@ -57,12 +57,19 @@ stallGuard                              | yes
 dcStep                                    | yes 
 
 ## Pin Functions
----
+
+***
+
 ### V3.0
+
 ![2209引脚图V3.0](/images/2209%E5%BC%95%E8%84%9A%E5%9B%BEV3.0.jpg)
+
 ### V3.1
+
 ![TMC2209_V31_引脚图](/images/TMC2209_V31_%E5%BC%95%E8%84%9A%E5%9B%BE.png)![image-20230508160723032]
+
 ### V4.0
+
 ![TMC2209_V40_引脚图](/images/image-20230508160723032.png)
 
 Pin|Function
@@ -93,7 +100,9 @@ INDEX	|Configurable index output. Provides index pulse.
 VREF|	Analog Reference Voltage
 
 ## Interface Resources
----
+
+***
+
 ###  Wiring Diagram
 
 ![2209接线图](/images/TMC2209_wiring.png)
@@ -109,12 +118,11 @@ VREF|	Analog Reference Voltage
 ![2209测vref](/images/TMC2209_vref_V30.jpg)
 
 The best way to set the motor current is by measuring the voltage on the Vref pin (0…2.5V) and adjusting the voltage with the potentiometer. The maximum settable motor current is 1.77A RMS (0.11Ohm sense resistors), but the SilentStepSticks can only be used up to 1.2A RMS.  
-Irms = (Vref * 1.77A) / 2.5V = Vref * 0.71  
-Vref = (Irms * 2.5V) / 1.77A = Irms * 1.41 = Imax   
+Irms = (Vref \* 1.77A) / 2.5V = Vref \* 0.71  
+Vref = (Irms \* 2.5V) / 1.77A = Irms \* 1.41 = Imax   
 Vref -> Voltage on Vref pin  
 Irms -> RMS (Root Mean Square) current per phase (Irms = Imax / 1.41)  
-Imax -> Maximum current per phase (Imax = Irms * 1.41)   
-
+Imax -> Maximum current per phase (Imax = Irms \* 1.41)   
 
 :::note
 
@@ -125,12 +133,9 @@ Imax -> Maximum current per phase (Imax = Irms * 1.41)
 
 :::
 
-
 ### Calculator
 
-
 <driver-calculator type="Silent2209"></driver-calculator>
-
 
 ### Micro-stepping
 
@@ -143,7 +148,7 @@ VIO	| VIO | 1⁄16 | 1⁄256 | stealthChop2
 
 ## Setting Method
 
-----
+\----
 
 ### V2.1 Hardware Connection
 
@@ -151,6 +156,7 @@ VIO	| VIO | 1⁄16 | 1⁄256 | stealthChop2
 
 You can use every RS232 serial adapter with 0-5V logic levels (e.g. FTDI-Breakout) and the SilentStepStick Tester/Programmer can be used as connection adapter.
 
+![](/images/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_2026-03-26_092205_317.jpg)
 
 :::tip
 
@@ -158,13 +164,9 @@ The FYSETC TMC2209V2.1 version has been set with jumpers, and the TX and RX pins
 
 :::
 
-
 ### V3.0 Hardware Connection
+
 ![2209串口接线V30](/images/2209%E4%B8%B2%E5%8F%A3%E6%8E%A5%E7%BA%BFV30.jpg)
-
-
-
-
 
 :::note
 
@@ -172,35 +174,33 @@ The FYSETC TMC2209V2.1 version has been set with jumpers, and the TX and RX pins
 
 :::
 
-
 ### V3.1 Hardware Connection
+
 ![2209V3.1原理图](/images/2209V3.1%E5%8E%9F%E7%90%86%E5%9B%BE.png)
 
 1. add CLK pin ，not connect in default，tie to GND via 0R
-
 2. SPREAD pin is floating. Reserve pull-up and pull-down resistors.
-
 3. Move TX from 3 to 5
-
 4. UART mode is compatible with F6,S6,SKR series and MKS series motherboards.
 
 ### V4.0 Hardware Connection
 
 ![image-20230508161953018](/images/image-20230508161953018.png)
 
-
----
+***
 
 ## Shop	
 
----
+***
+
 - [TMC2209](https://www.aliexpress.com/item/33025556705.html)
 
 ## Tech Support
 
----
+***
+
 Please submit any technical issue into our [forum](http://forum.fysetc.com/)
 
----
+***
 
 资料与图片来源：[FYSETC Wiki — Silent2209](https://wiki.fysetc.com/Silent2209/)。本副本从本地 FYSETC Docusaurus 参考项目摘取，用于文档编辑与发布链路测试，仅调整文档分类与来源说明。原仓库许可证已备份为 `third-party/FYSETC-APACHE-LICENSE.txt`。
