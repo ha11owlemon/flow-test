@@ -6,8 +6,9 @@ const config = {
   title: '文档链路测试',
   tagline: 'Sveltia CMS → GitHub → GitHub Actions',
   favicon: 'img/favicon.ico',
-  url: 'http://localhost:3000',
-  baseUrl: '/',
+  url: 'https://ha11owlemon.github.io',
+  baseUrl: '/flow-test/',
+  trailingSlash: true,
   onBrokenLinks: 'throw',
   i18n: {
     defaultLocale: 'zh-Hans',
