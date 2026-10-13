@@ -68,8 +68,8 @@ collections:
       - name: body
         label: 正文（Markdown）
         widget: markdown
-        modes: [raw]
-        hint: 保留原文的 HTML 表格；右侧预览与文档站的显示可能不同。
+        modes: [raw, rich_text]
+        hint: 源码模式保留原文 HTML；普通文档可切换到可视化模式，使用图片按钮上传或选择图片并直接插入。含 HTML 表格或自定义组件的文档请保留源码模式。
 
 asset_collections:
   - name: document_images
