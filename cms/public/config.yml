@@ -18,12 +18,21 @@ slug:
 output:
   omit_empty_optional_fields: true
 
+# 以相同的相对文件路径关联中英文版本，新建文档时默认启用两种语言。
+i18n:
+  structure: multiple_folders
+  locales: [zh-Hans, en]
+  default_locale: zh-Hans
+  initial_locales: all
+  omit_default_locale_from_preview_path: true
+
 collections:
   - name: documentation
-    label: 中文文档
-    label_singular: 中文文档
-    description: 管理远程 main 分支；保存后提交 GitHub 并触发文档构建。
-    folder: docs
+    label: 双语文档
+    label_singular: 文档
+    description: 在同一篇文档中切换简体中文与 English；保存后提交远程 main 分支。
+    folder: i18n/{{locale}}/docusaurus-plugin-content-docs/current
+    i18n: true
     extension: md
     format: frontmatter
     create: true
@@ -31,13 +40,13 @@ collections:
     duplicate: false
     identifier_field: id
     slug: {template: '{{id}}', editable: false}
-    summary: '{{title}} · {{id}}'
-    preview_path: 'docs{{fields.slug}}/'
+    summary: '{{title}} · {{id}} · {{locales}}'
+    preview_path: '{{locale}}/docs{{fields.slug}}/'
     nested:
       subfolders: false
     meta:
       path: {}
-    # 显式绝对路径，防止子目录文档把图片传到 docs/.../static/images。
+    # 所有语言共用图片库；绝对路径防止图片上传到文档的语言子目录。
     media_folder: /static/images
     public_folder: /images
     sortable_fields: [title, sidebar_position]
@@ -45,83 +54,45 @@ collections:
       - name: id
         label: 文档 ID
         widget: string
+        i18n: duplicate
         pattern: ['^[A-Za-z0-9][A-Za-z0-9._-]*$', '请使用英文字母、数字、点、横线和下划线']
         hint: 已有文档保持 ID 不变；新建时使用唯一 ID。
       - name: title
         label: 标题
         widget: string
+        i18n: true
       - name: slug
         label: 页面地址
         widget: string
+        i18n: duplicate
         pattern: ['^/[A-Za-z0-9][A-Za-z0-9._/-]*$', '地址须以 / 开头，后面使用英文字母、数字、横线、下划线或子目录']
         hint: 新建时填写 /文档ID；已有地址保持不变，避免链接失效。
       - name: sidebar_position
         label: 目录顺序
         widget: number
+        i18n: duplicate
         value_type: int
         min: 1
         required: false
       - name: description
         label: 摘要
         widget: text
+        i18n: true
         required: false
       - name: body
         label: 正文（Markdown）
         widget: markdown
+        i18n: true
         modes: [raw, rich_text]
         hint: 源码模式保留原文 HTML；普通文档可切换到可视化模式，使用图片按钮上传或选择图片并直接插入。含 HTML 表格或自定义组件的文档请保留源码模式。
 
-  - name: documentation_en
-    label: English docs
-    label_singular: English doc
-    description: 管理远程 main 分支英文文档；保存后提交 GitHub 并触发文档构建。
-    folder: i18n/en/docusaurus-plugin-content-docs/current
-    extension: md
-    format: frontmatter
-    create: true
-    delete: false
-    duplicate: false
-    identifier_field: id
-    slug: {template: '{{id}}', editable: false}
-    summary: '{{title}} · {{id}}'
-    preview_path: 'en/docs{{fields.slug}}/'
-    nested:
-      subfolders: false
-    meta:
-      path: {}
-    # 所有语言共用文档仓库根目录的图片库。
-    media_folder: /static/images
-    public_folder: /images
-    sortable_fields: [title, sidebar_position]
-    fields:
-      - name: id
-        label: 文档 ID
-        widget: string
-        pattern: ['^[A-Za-z0-9][A-Za-z0-9._-]*$', '请使用英文字母、数字、点、横线和下划线']
-        hint: 已有文档保持 ID 不变；新建时使用唯一 ID。
-      - name: title
-        label: 标题
-        widget: string
-      - name: slug
-        label: 页面地址
-        widget: string
-        pattern: ['^/[A-Za-z0-9][A-Za-z0-9._/-]*$', '地址须以 / 开头，后面使用英文字母、数字、横线、下划线或子目录']
-        hint: 新建时填写 /文档ID；已有地址保持不变，避免链接失效。
-      - name: sidebar_position
-        label: 目录顺序
-        widget: number
-        value_type: int
-        min: 1
-        required: false
-      - name: description
-        label: 摘要
-        widget: text
-        required: false
-      - name: body
-        label: 正文（Markdown）
-        widget: markdown
-        modes: [raw, rich_text]
-        hint: 源码模式保留原文 HTML；普通文档可切换到可视化模式，使用图片按钮上传或选择图片并直接插入。含 HTML 表格或自定义组件的文档请保留源码模式。
+      # 保留迁移文章的来源信息；不需要编辑，也不随目标语言改变。
+      - name: source_file
+        widget: hidden
+        i18n: duplicate
+      - name: source_language
+        widget: hidden
+        i18n: duplicate
 
 asset_collections:
   - name: document_images

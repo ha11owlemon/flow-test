@@ -63,7 +63,7 @@ npm.cmd run build
 
 IP 变化时先停止，再执行 `.\cms\lan\Start-Lan.ps1 -LanHost 新IP`，同步更新 OAuth Homepage/首个回调、防火墙地址。建议通过 DHCP 保留地址维持稳定入口。
 
-CMS 两个文档集合分别编辑远程 `docs/` 和 `i18n/en/docusaurus-plugin-content-docs/current/`，两种语言共用远程 `static/images/`。CMS 保存到 GitHub 后，线上 Pages 由工作流更新；局域网文档预览使用本机 `build/` 快照，需要先同步远程、重新执行 `npm.cmd run build` 才会更新。CMS 的文章预览链接继续指向 GitHub Pages。
+CMS 使用一个原生多语言文档集合，编辑远程 `i18n/zh-Hans/docusaurus-plugin-content-docs/current/` 和 `i18n/en/docusaurus-plugin-content-docs/current/` 中关联的文章。在文档编辑器语言菜单选择简体中文或 English，可同时编辑两种语言；两种语言共用远程 `static/images/`。CMS 保存到 GitHub 后，线上 Pages 由工作流更新；局域网文档预览使用本机 `build/` 快照，需要先同步远程、重新执行 `npm.cmd run build` 才会更新。CMS 的文章预览链接继续指向 GitHub Pages。启用原生 i18n 无需修改 OAuth App 地址；AI 翻译需另行配置服务商的 API Key。
 
 仅上传、替换或删除 `static/images/` 内资源会跳过工作流，随后修改中文或英文文档时会构建并一并发布当前图片；需要立即发布图片时可手动运行工作流。
 

@@ -12,17 +12,17 @@
 
 | 文档 | 仓库位置 | 页面 |
 | --- | --- | --- |
-| Cheetah v2.0 | `docs/controllers/Cheetah_Board_V20.md` | `/docs/Cheetah_Board_V20/` |
-| Silent2209 | `docs/drivers/Silent2209.md` | `/docs/Silent2209/` |
-| HV5160 | `docs/drivers/HV5160.md` | `/docs/HV5160/` |
-| Mini12864 | `docs/displays/Mini12864_Panel.md` | `/docs/Mini12864_Panel/` |
-| UCAN | `docs/modules/UCAN.md` | `/docs/UCAN/` |
-| 内容编辑测试 | `docs/edit-content-test.md` | `/docs/edit-content-test/` |
-| 发布验证测试 | `docs/publish-verification-test.md` | `/docs/publish-verification-test/` |
+| Cheetah v2.0 | `i18n/zh-Hans/docusaurus-plugin-content-docs/current/controllers/Cheetah_Board_V20.md` | `/docs/Cheetah_Board_V20/` |
+| Silent2209 | `i18n/zh-Hans/docusaurus-plugin-content-docs/current/drivers/Silent2209.md` | `/docs/Silent2209/` |
+| HV5160 | `i18n/zh-Hans/docusaurus-plugin-content-docs/current/drivers/HV5160.md` | `/docs/HV5160/` |
+| Mini12864 | `i18n/zh-Hans/docusaurus-plugin-content-docs/current/displays/Mini12864_Panel.md` | `/docs/Mini12864_Panel/` |
+| UCAN | `i18n/zh-Hans/docusaurus-plugin-content-docs/current/modules/UCAN.md` | `/docs/UCAN/` |
+| 内容编辑测试 | `i18n/zh-Hans/docusaurus-plugin-content-docs/current/edit-content-test.md` | `/docs/edit-content-test/` |
+| 发布验证测试 | `i18n/zh-Hans/docusaurus-plugin-content-docs/current/publish-verification-test.md` | `/docs/publish-verification-test/` |
 
 FYSETC 文章保留原稿语言。图片统一位于 `static/images/`，正文引用为 `/images/文件名`。Docusaurus 会把 Markdown 和原始 HTML 图片地址适配为 `/flow-test/images/...`；原文驱动计算器保留为 React 组件。
 
-网站现有七篇文档提供英文版本，位于 `i18n/en/docusaurus-plugin-content-docs/current/`，与 `docs/` 保持相同相对路径、ID 和 slug。中文默认入口 `/flow-test/`，英文入口 `/flow-test/en/`；首页、导航和目录支持语言切换，两种语言共用 `static/images/`。
+网站现有七篇文档提供英文版本。中文位于 `i18n/zh-Hans/docusaurus-plugin-content-docs/current/`，英文位于 `i18n/en/docusaurus-plugin-content-docs/current/`，两种语言保持相同相对路径、ID 和 slug。Docusaurus 的 `docs.path` 指向中文目录。中文默认入口 `/flow-test/`，英文入口 `/flow-test/en/`；首页、导航和目录支持语言切换，两种语言共用 `static/images/`。
 
 参考项目：`C:/Users/kg/Documents/Codex/2026-10-12/mkdcos-docusaurus-wiki/outputs/fysetc-docusaurus`。文章与图片来源为 [FYSETC Wiki 源仓库](https://github.com/FYSETC/wiki.fysetc)，各篇末尾保留原文链接；原仓库 Apache 2.0 许可证备份位于 `third-party/FYSETC-APACHE-LICENSE.txt`。本仓库用于链路测试。
 
@@ -55,7 +55,11 @@ npm.cmd run cms:start
 
 管理端：<http://127.0.0.1:3004/>。选择 **使用 GitHub 登录**，读取和保存远程 `ha11owlemon/flow-test` 的 `main` 分支。**使用本地仓库**是另一条手工 Git 工作流，不用于本次远程链路。
 
-配置在 `cms/public/config.yml`。中文文档集合读取 `docs/`，English docs 集合读取 `i18n/en/docusaurus-plugin-content-docs/current/`，每篇普通 Markdown 文件是一条文档。新建时填写唯一 ID 和固定页面地址，例如 `/My_New_Document`，中文发布地址为 `/flow-test/docs/My_New_Document/`，英文为 `/flow-test/en/docs/My_New_Document/`。已有 ID 和页面地址应保持不变。目录分类由 `_category_.json` 定义，文档顺序用 `sidebar_position`。翻译不会自动跟随中文更新，需要分别编辑两种语言。
+配置在 `cms/public/config.yml`。CMS 使用一个原生 i18n 文档集合，目录模板为 `i18n/{{locale}}/docusaurus-plugin-content-docs/current/`，默认语言为 `zh-Hans`，另一语言为 `en`。相同相对路径的中英文文件会关联成同一篇文档，在编辑器的语言菜单中切换或并排编辑。七篇文档仍保存为十四个 Markdown 文件。
+
+标题、摘要、正文使用 `i18n: true`，可分别编辑；ID、页面地址、目录顺序和来源字段使用 `i18n: duplicate`，从中文同步到英文。新建时填写唯一 ID 和固定页面地址，例如 `/My_New_Document`，中文发布地址为 `/flow-test/docs/My_New_Document/`，英文为 `/flow-test/en/docs/My_New_Document/`。已有 ID 和页面地址应保持不变。目录分类由 `_category_.json` 定义，文档顺序用 `sidebar_position`。
+
+打开文档后，从语言菜单选择简体中文或 English；需要同时编辑时启用两个语言面板，完成后保存。预览地址默认中文不带语言前缀，英文带 `/en/`。i18n 不会自动翻译正文：可手动填写译文，也可配置 Sveltia 内置翻译服务的 API Key 后点击翻译按钮。当前未配置 AI Key，也不会自动调用付费翻译服务；已有英文更新需按需重新翻译。
 
 正文采用 Markdown 源码模式，保留 HTML 表格等内容。通用预览不能完整渲染 Docusaurus 自定义组件，实际效果以前台构建页面为准。
 

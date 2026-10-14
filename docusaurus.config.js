@@ -30,6 +30,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          path: './i18n/zh-Hans/docusaurus-plugin-content-docs/current',
           sidebarPath: './sidebars.js',
           editUrl: 'https://github.com/ha11owlemon/flow-test/edit/main/',
           editLocalizedFiles: true,
