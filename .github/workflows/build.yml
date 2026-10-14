@@ -3,8 +3,13 @@ name: Build and deploy Docusaurus
 on:
   push:
     branches: [main]
+    # An image-only upload waits for a document change or manual deployment.
+    paths-ignore:
+      - 'static/images/**'
   pull_request:
     branches: [main]
+    paths-ignore:
+      - 'static/images/**'
   workflow_dispatch:
 
 permissions:
