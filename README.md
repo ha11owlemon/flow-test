@@ -61,6 +61,10 @@ npm.cmd run cms:start
 
 打开文档后，从语言菜单选择简体中文或 English；需要同时编辑时启用两个语言面板，完成后保存。预览地址默认中文不带语言前缀，英文带 `/en/`。i18n 不会自动翻译正文：可手动填写译文，也可配置 Sveltia 内置翻译服务的 API Key 后点击翻译按钮。当前未配置 AI Key，也不会自动调用付费翻译服务；已有英文更新需按需重新翻译。
 
+“在在线站点查看”使用 `preview_path: 'flow-test/{{locale}}/docs{{fields.slug}}/'`。Sveltia 以站点的 origin 解析文章链接，因此这里显式保留 GitHub Pages 的 `/flow-test/` 前缀；默认中文省略语言段，英文保留 `/en/`。
+
+翻译 API 配置入口已内置：内容库右上角账户菜单 → 设置 → 国际化。可选择默认翻译服务，并填写 Anthropic Claude、DeepSeek、Google Cloud Translation、Google Gemini、Mistral 或 OpenAI GPT 的 API Key。密钥保存于当前浏览器，不会写入 Git 仓库或集中保存在 CMS 服务器。当前版本没有自定义 Base URL 或模型配置入口，公司统一网关需要另外接入。
+
 正文采用 Markdown 源码模式，保留 HTML 表格等内容。通用预览不能完整渲染 Docusaurus 自定义组件，实际效果以前台构建页面为准。
 
 普通 Markdown 文档可通过正文工具栏切换到可视化模式，再用图片按钮从资源库选择或上传并插入图片。源码模式的图片按钮只插入 Markdown 占位符，需填入资源库复制的公开路径。含原始 HTML 表格、驱动计算器等自定义组件的文档建议使用源码模式，避免可视化转换改变格式。

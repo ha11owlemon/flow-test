@@ -41,7 +41,8 @@ collections:
     identifier_field: id
     slug: {template: '{{id}}', editable: false}
     summary: '{{title}} · {{id}} · {{locales}}'
-    preview_path: '{{locale}}/docs{{fields.slug}}/'
+    # CMS uses the site origin, so include the GitHub Pages repository prefix.
+    preview_path: 'flow-test/{{locale}}/docs{{fields.slug}}/'
     nested:
       subfolders: false
     meta:
