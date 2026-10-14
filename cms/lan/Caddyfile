@@ -1,0 +1,26 @@
+{
+	admin 127.0.0.1:2019
+	auto_https disable_redirects
+	skip_install_trust
+	storage file_system {
+		root {$CADDY_DATA_DIR}
+	}
+}
+
+https://{$CMS_LAN_HOST}:{$CMS_LAN_PORT} {
+	tls internal
+
+	@oauth path /auth /callback /oauth/authorize /oauth/redirect
+	handle @oauth {
+		reverse_proxy 127.0.0.1:8787
+	}
+
+	redir /flow-test /flow-test/ 308
+	handle /flow-test/* {
+		reverse_proxy 127.0.0.1:3005
+	}
+
+	handle {
+		reverse_proxy 127.0.0.1:3004
+	}
+}

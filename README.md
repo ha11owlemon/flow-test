@@ -22,6 +22,8 @@
 
 FYSETC 文章保留原稿语言。图片统一位于 `static/images/`，正文引用为 `/images/文件名`。Docusaurus 会把 Markdown 和原始 HTML 图片地址适配为 `/flow-test/images/...`；原文驱动计算器保留为 React 组件。
 
+网站现有七篇文档提供英文版本，位于 `i18n/en/docusaurus-plugin-content-docs/current/`，与 `docs/` 保持相同相对路径、ID 和 slug。中文默认入口 `/flow-test/`，英文入口 `/flow-test/en/`；首页、导航和目录支持语言切换，两种语言共用 `static/images/`。
+
 参考项目：`C:/Users/kg/Documents/Codex/2026-10-12/mkdcos-docusaurus-wiki/outputs/fysetc-docusaurus`。文章与图片来源为 [FYSETC Wiki 源仓库](https://github.com/FYSETC/wiki.fysetc)，各篇末尾保留原文链接；原仓库 Apache 2.0 许可证备份位于 `third-party/FYSETC-APACHE-LICENSE.txt`。本仓库用于链路测试。
 
 ## 文档站本地运行
@@ -53,7 +55,7 @@ npm.cmd run cms:start
 
 管理端：<http://127.0.0.1:3004/>。选择 **使用 GitHub 登录**，读取和保存远程 `ha11owlemon/flow-test` 的 `main` 分支。**使用本地仓库**是另一条手工 Git 工作流，不用于本次远程链路。
 
-配置在 `cms/public/config.yml`。目录树读取 `docs/`，每篇普通 Markdown 文件是一条文档。新建时填写唯一 ID 和固定页面地址，例如 `/My_New_Document`，发布地址就是 `/flow-test/docs/My_New_Document/`。已有 ID 和页面地址应保持不变。目录分类由 `_category_.json` 定义，文档顺序用 `sidebar_position`。
+配置在 `cms/public/config.yml`。中文文档集合读取 `docs/`，English docs 集合读取 `i18n/en/docusaurus-plugin-content-docs/current/`，每篇普通 Markdown 文件是一条文档。新建时填写唯一 ID 和固定页面地址，例如 `/My_New_Document`，中文发布地址为 `/flow-test/docs/My_New_Document/`，英文为 `/flow-test/en/docs/My_New_Document/`。已有 ID 和页面地址应保持不变。目录分类由 `_category_.json` 定义，文档顺序用 `sidebar_position`。翻译不会自动跟随中文更新，需要分别编辑两种语言。
 
 正文采用 Markdown 源码模式，保留 HTML 表格等内容。通用预览不能完整渲染 Docusaurus 自定义组件，实际效果以前台构建页面为准。
 
@@ -123,6 +125,12 @@ CMS 和认证服务可以位于内网，无需公网 IP：GitHub 让编辑人员
 工作流 `.github/workflows/build.yml` 在推送到 `main`、更新面向 `main` 的 PR 或手动运行时触发，使用 Node.js 24 与 `npm ci` 构建。主分支部署到 Pages，PR 只构建；Settings → Pages → Source 应为 **GitHub Actions**。
 
 同一工作流、同一分支使用 `concurrency` 与 `cancel-in-progress: true`。连续保存会产生多个运行记录，新运行取消未完成的旧运行，保留最新构建。文档工作流不打包 CMS。
+
+只改 `static/images/` 时跳过工作流，之后修改文档时才一并发布图片；混合图片与文档修改仍然构建，手动运行入口保持可用。
+
+## 局域网 Caddy 测试
+
+完整启动、证书信任、防火墙和 OAuth App 地址配置见 [局域网部署说明](cms/lan/README.md)。本机配置的 CMS 入口为 `https://192.168.0.171:8443/`，中文文档为 `/flow-test/`，英文文档为 `/flow-test/en/`。
 
 文档站：<https://ha11owlemon.github.io/flow-test/>。
 
