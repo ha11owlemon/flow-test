@@ -1,8 +1,8 @@
 ---
 id: Mini12864_Panel
 title: Mini12864 Panel
-description: Display panel documentation for Mini12864, including the original wiring and firmware configuration instructions.
 slug: /Mini12864_Panel
+description: Display panel documentation for Mini12864, including the original wiring and firmware configuration instructions.
 source_file: Mini12864_Panel.md
 source_language: en
 ---

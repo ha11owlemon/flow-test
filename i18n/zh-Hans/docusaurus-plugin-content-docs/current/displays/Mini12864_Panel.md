@@ -1,69 +1,69 @@
 ---
 id: Mini12864_Panel
 title: Mini12864 面板
-description: Mini12864 面板 的显示面板文档，便于查阅相关原始说明。
 slug: /Mini12864_Panel
+description: Mini12864 面板 的显示面板文档，便于查阅相关原始说明。
 source_file: Mini12864_Panel.md
 source_language: en
 ---
 
-## Product Introduction
+## 产品介绍
 
 
 ![Mini12864](/images/Mini12864.png)
 
-This is a opensouce, cheap, with RGB indicator, common to marlin's display, supports offline printing, resolution is 12864, display area is 2.4'', SD card holder can be side or vertical, convenient for different installation occasions Ideal for small 3D printers.
+这是一款开源、廉价、带 RGB 指示灯、兼容 Marlin 的显示屏，支持离线打印，分辨率为 12864，显示区域为 2.4 英寸，SD 卡座可侧置或垂直放置，方便不同安装场合，非常适合小型 3D 打印机。
 
-There are three versions：
+共有三个版本：
 
-V1.2 with  two RGB LEDs around the encoder, the back-light is fixed color.
+V1.2 在编码器周围有两个 RGB LED，背光为固定颜色。
 
-V2.0 with  two RGB LEDs around the encoder，the  back-light is  RGB  and controlled by 3 pwm pins.
+V2.0 在编码器周围有两个 RGB LED，背光为 RGB，由 3 个 PWM 引脚控制。
 
-V2.1 with  two RGB LEDs around the encoder，the  back-light is  RGB  and controlled by 3 WS2811 chips, same as the NEOPIXEL_LED.
+V2.1 在编码器周围有两个 RGB LED，背光为 RGB，由 3 个 WS2811 芯片控制，与 NEOPIXEL_LED 相同。
 
-## Features
+## 特点
 
-- 2.4" inch high contrast Graphic LCD
-- Black-gray/black-green/white-black/white-blue/green-black, 5 display styles
-- SPI communication to host micro-controller
-- Support Vertical or side SD slot with card detect,with a optional  SD module
-- Rotary Encoder with RGB-Aura
-- Configurable RGB LED light
-- Software configurable contrast setting
-- 3D printable case and mount STL file 
-- EXP1 & EXP2  RAMPS Compatible socket
-
-
-
-## Application
-
-3D printer，CNC machines ，Other micro controller projects
+- 2.4 英寸高对比度图形 LCD
+- 黑灰/黑绿/白黑/白蓝/绿黑，5 种显示风格
+- 通过 SPI 与主机微控制器通信
+- 支持垂直或侧置 SD 插槽，带卡检测，可选配 SD 模块
+- 带 RGB 光环的旋转编码器
+- 可配置 RGB LED 灯
+- 软件可配置对比度设置
+- 可 3D 打印外壳和安装 STL 文件
+- EXP1 和 EXP2 RAMPS 兼容插座
 
 
 
-## Typical  Wiring
+## 应用
+
+3D 打印机、CNC 机床、其他微控制器项目
+
+
+
+## 典型接线
 ![](/images/Mini12864-bottom.svg)
 
 ![](/images/Mini12864-EXP1.svg)
 
 ![](/images/Mini12864-EXP2.svg)
 
-## 注意/NOTICE:
+## 注意：
 
 ![](/images/Spider_notice.png)
 
-    为了兼容某些主板，如RAMPS1.4，FYSETC mini12864 设置了 RST(R3) 和 KILL(R4) 的可选择电阻。目前，有些主板（S6/Spider）将 KILL 换成 5V，此时，请确认 mini12864 上 R4处于空贴状态，否则按下屏幕上的按钮会致使 5V 与 GND 短路，长时间操作会导致主板损坏。<br/>   In order to be compatible with some motherboards, such as RAMPS1.4, mini12864 is equipped with RST (R3) and KILL (R4) optional resistors. At present, some motherboards (S6/Spider) change the KILL to 5V. At this time, please make sure that R4 on the mini12864 is in the empty state, otherwise pressing the button on the screen will cause a short circuit between 5V and GND, and long-term operation will cause the motherboard to be damaged.
+    为了兼容某些主板，例如 RAMPS1.4，mini12864 配备了 RST (R3) 和 KILL (R4) 可选电阻。目前，某些主板（S6/Spider）将 KILL 改为 5V。此时，请确保 mini12864 上的 R4 处于空置状态，否则按下屏幕上的按钮会导致 5V 与 GND 之间短路，长期运行会导致主板损坏。
 
-## Firmware config
+## 固件配置
 
-This screen driver is ST7567 and is compatible with the marlin Mini panel (UC1701,same as ST7567). It has been tested well, and the following configuration is required.
+此屏幕驱动为 ST7567，兼容 Marlin Mini 面板（UC1701，与 ST7567 相同）。已测试良好，需要进行以下配置。
 
-**Before you start, please install the latest version of U8glib.**
+**开始之前，请安装最新版本的 U8glib。**
 
-### Step1. changes the pins.
+### 步骤1. 更改引脚。
 
-On a RAMPS-compatible board, you need to make the following changes in pins_RAMPS.h:
+在兼容 RAMPS 的主板上，需要在 pins_RAMPS.h 中进行以下更改：
 ```
  #elif ENABLED(MINIPANEL)
       #define BEEPER_PIN 37
@@ -83,13 +83,13 @@ On a RAMPS-compatible board, you need to make the following changes in pins_RAMP
       #define SD_DETECT_PIN 49
 ```
 
-### Step2. Config the configuration.h. 
+### 步骤2. 配置 configuration.h。
 
-In order to control RGB-LED, you also need to turn on the RGB control in marlin.
+为了控制 RGB-LED，还需要在 Marlin 中开启 RGB 控制。
 
-For V1.2 and V2.0: 
+对于 V1.2 和 V2.0：
 
-You need enable the RGB_LED, and config the R/G/B pins.
+需要启用 RGB_LED，并配置 R/G/B 引脚。
 ```
 // 1.enable this line for mini12864 V1.2 and 
 #define RGB_LED 
@@ -104,7 +104,7 @@ You need enable the RGB_LED, and config the R/G/B pins.
 #endif
 ```
 
-For V2.1, you only need enable the NEOPIXEL_LED.
+对于 V2.1，只需启用 NEOPIXEL_LED。
 ```
 // Support for Adafruit Neopixel LED driver
 // 1. only need enable the NEOPINEL_LED for mini12864 V2.1
@@ -119,9 +119,9 @@ For V2.1, you only need enable the NEOPIXEL_LED.
 #endif
 ```
 
-### Step3. Config the configuration_adv.h.
+### 步骤3. 配置 configuration_adv.h。
 
-If you need to change the RGB-color manually,  then you need to enable the LED_CONTROL_MENU in configuration_adv.h. If you don't need it, you can skip this step.
+如果需要手动更改 RGB 颜色，则需要在 configuration_adv.h 中启用 LED_CONTROL_MENU。如果不需要，可以跳过此步骤。
 ```
 /**
  * LED Control Menu
@@ -142,57 +142,57 @@ If you need to change the RGB-color manually,  then you need to enable the LED_C
 #endif // LED_CONTROL_MENU
 ```
 
-### Step4. add the codes in ultralcd_impl_DOGM.h.
+### 步骤4. 在 ultralcd_impl_DOGM.h 中添加代码。
 
-You need to add a shorts codes to ultralcd_impl_DOGM.h, otherwise your screen may not have text displayed, or it may not be clear.
-Add  "u8g.setContrast(255);" in the "static void lcd_implementation_init()" function:
+需要在 ultralcd_impl_DOGM.h 中添加一小段代码，否则屏幕可能不显示文本，或者可能不清晰。
+在 "static void lcd_implementation_init()" 函数中添加 "u8g.setContrast(255);"：
 
 ![1551170953232](/images/1551170953232.png)
 
-## Optional Hardware module:
+## 可选硬件模块：
 
-The SD card of mini12864 can be  set on the side or in the front,  which requires a module to implement. As shown below:
+mini12864 的 SD 卡可以设置在侧面或前面，这需要一个模块来实现。如下所示：
 
 ![mini12864_SD1](/images/mini12864_SD1.png)
 
-## Attention
+## 注意
 
--TBD-
+-待定-
 
-## FAQ
+## 常见问题
 
-1. Q: What drive is used for the screen?
-   A: Sitronix ST7567,  You can get the specification in our [github](https://github.com/FYSETC/Mini-12864-Panel).
+1. 问：屏幕使用什么驱动？
+   答：Sitronix ST7567，您可以在我们的 [github](https://github.com/FYSETC/Mini-12864-Panel) 中获取规格书。
 
-2. Q: What is the difference between the three versions?
+2. 问：三个版本之间有什么区别？
 
-   A: Only the backlight is different, the wiki has a detailed description at the beginning.
+   答：只有背光不同，wiki 开头有详细描述。
 
-## Attachments
-### 1. Schematic
+## 附件
+### 1. 原理图
 
 ---------
 
-You can find the schematics for the three versions on [github](https://github.com/FYSETC/Mini-12864-Panel).
+您可以在 [github](https://github.com/FYSETC/Mini-12864-Panel) 上找到三个版本的原理图。
 
 
 
-### 2. Dimensions
+### 2. 尺寸
 
 ---------
 
 ![](/images/mini12864_dim.png)
 
-**For detailed dimensions please check dwg/step file on [github](https://github.com/FYSETC/Mini-12864-Panel).**
+**有关详细尺寸，请查看 [github](https://github.com/FYSETC/Mini-12864-Panel) 上的 dwg/step 文件。**
 
-## Shop
+## 商店
 ---
-- LCD（原资料未提供链接）
+- LCD（源材料中未提供链接）
 
-## Tech Support
+## 技术支持
 ---
-Please submit any technical issue into our [forum](http://forum.fysetc.com/) or [facebook](https://www.facebook.com/groups/197476557529090/).
+请将任何技术问题提交到我们的 [论坛](http://forum.fysetc.com/) 或 [facebook](https://www.facebook.com/groups/197476557529090/)。
 
 ---
 
-资料与图片来源：[FYSETC Wiki — Mini12864 Panel](https://wiki.fysetc.com/Mini12864_Panel/)。本副本从本地 FYSETC Docusaurus 参考项目摘取，用于文档编辑与发布链路测试，仅调整文档分类与来源说明。原仓库许可证已备份为 `third-party/FYSETC-APACHE-LICENSE.txt`。
+内容和图片来源：[FYSETC Wiki — Mini12864 Panel](https://wiki.fysetc.com/Mini12864_Panel/)。此副本取自本地 FYSETC Docusaurus 参考项目，用于测试文档编辑和发布工作流程。更改仅限于文档分类、来源归属和翻译。原始仓库许可证保留在 `third-party/FYSETC-APACHE-LICENSE.txt` 中。
