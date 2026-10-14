@@ -1,0 +1,18 @@
+{
+  "logo.alt": {
+    "message": "FYSETC Documentation Workflow Test",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.产品文档": {
+    "message": "Product documentation",
+    "description": "Navbar item with label 产品文档"
+  },
+  "item.label.编辑与发布测试": {
+    "message": "Editing and publishing tests",
+    "description": "Navbar item with label 编辑与发布测试"
+  },
+  "item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Navbar item with label GitHub"
+  }
+}

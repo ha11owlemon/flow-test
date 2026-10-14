@@ -1,0 +1,54 @@
+{
+  "link.title.产品资料": {
+    "message": "Product documentation",
+    "description": "The title of the footer links column with title=产品资料 in the footer"
+  },
+  "link.title.链路测试": {
+    "message": "Workflow tests",
+    "description": "The title of the footer links column with title=链路测试 in the footer"
+  },
+  "link.title.资料来源": {
+    "message": "Sources",
+    "description": "The title of the footer links column with title=资料来源 in the footer"
+  },
+  "link.item.label.控制板": {
+    "message": "Controller boards",
+    "description": "The label of footer link with label=控制板 linking to /docs/category/controllers/"
+  },
+  "link.item.label.步进驱动": {
+    "message": "Stepper drivers",
+    "description": "The label of footer link with label=步进驱动 linking to /docs/category/drivers/"
+  },
+  "link.item.label.显示面板": {
+    "message": "Display panels",
+    "description": "The label of footer link with label=显示面板 linking to /docs/category/displays/"
+  },
+  "link.item.label.扩展模块": {
+    "message": "Expansion modules",
+    "description": "The label of footer link with label=扩展模块 linking to /docs/category/modules/"
+  },
+  "link.item.label.内容编辑": {
+    "message": "Content editing",
+    "description": "The label of footer link with label=内容编辑 linking to /docs/edit-content-test"
+  },
+  "link.item.label.发布验证": {
+    "message": "Deployment verification",
+    "description": "The label of footer link with label=发布验证 linking to /docs/publish-verification-test"
+  },
+  "link.item.label.测试仓库": {
+    "message": "Test repository",
+    "description": "The label of footer link with label=测试仓库 linking to https://github.com/ha11owlemon/flow-test"
+  },
+  "link.item.label.FYSETC Wiki": {
+    "message": "FYSETC Wiki",
+    "description": "The label of footer link with label=FYSETC Wiki linking to https://wiki.fysetc.com/"
+  },
+  "link.item.label.FYSETC 源仓库": {
+    "message": "FYSETC source repository",
+    "description": "The label of footer link with label=FYSETC 源仓库 linking to https://github.com/FYSETC/wiki.fysetc"
+  },
+  "copyright": {
+    "message": "Product documentation and images: FYSETC Wiki · Documentation workflow test site",
+    "description": "The footer copyright"
+  }
+}

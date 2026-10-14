@@ -156,7 +156,7 @@ VIO	| VIO | 1⁄16 | 1⁄256 | stealthChop2
 
 You can use every RS232 serial adapter with 0-5V logic levels (e.g. FTDI-Breakout) and the SilentStepStick Tester/Programmer can be used as connection adapter.
 
-![](/images/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_2026-03-26_092205_317.jpg)
+![](/images/6_45931002-3c1b-4c7c-94b4-0d0857f66927.jpg)
 
 :::tip
 

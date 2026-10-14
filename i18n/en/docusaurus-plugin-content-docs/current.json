@@ -1,0 +1,38 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.docsSidebar.category.控制板": {
+    "message": "Controller boards",
+    "description": "The label for category '控制板' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.控制板.link.generated-index.description": {
+    "message": "Features, wiring and firmware configuration for FYSETC controller boards.",
+    "description": "The generated-index page description for category '控制板' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.步进电机驱动": {
+    "message": "Stepper drivers",
+    "description": "The label for category '步进电机驱动' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.步进电机驱动.link.generated-index.description": {
+    "message": "Specifications, pinouts and operating modes for stepper drivers.",
+    "description": "The generated-index page description for category '步进电机驱动' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.显示面板": {
+    "message": "Display panels",
+    "description": "The label for category '显示面板' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.显示面板.link.generated-index.description": {
+    "message": "Wiring, firmware configuration and installation references for display panels.",
+    "description": "The generated-index page description for category '显示面板' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.扩展模块": {
+    "message": "Expansion modules",
+    "description": "The label for category '扩展模块' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.扩展模块.link.generated-index.description": {
+    "message": "Hardware, firmware and interface documentation for expansion modules.",
+    "description": "The generated-index page description for category '扩展模块' in sidebar 'docsSidebar'"
+  }
+}

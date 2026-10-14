@@ -18,7 +18,11 @@ const config = {
   },
   i18n: {
     defaultLocale: 'zh-Hans',
-    locales: ['zh-Hans'],
+    locales: ['zh-Hans', 'en'],
+    localeConfigs: {
+      'zh-Hans': {label: '简体中文'},
+      en: {label: 'English'},
+    },
   },
   presets: [
     [
@@ -28,6 +32,7 @@ const config = {
         docs: {
           sidebarPath: './sidebars.js',
           editUrl: 'https://github.com/ha11owlemon/flow-test/edit/main/',
+          editLocalizedFiles: true,
           rehypePlugins: [[legacyHtml, {baseUrl: '/flow-test/'}]],
         },
         blog: false,
@@ -49,6 +54,7 @@ const config = {
             label: '产品文档',
           },
           {to: '/docs/edit-content-test', label: '编辑与发布测试', position: 'left'},
+          {type: 'localeDropdown', position: 'right'},
           {href: 'https://github.com/ha11owlemon/flow-test', label: 'GitHub', position: 'right'},
         ],
       },
